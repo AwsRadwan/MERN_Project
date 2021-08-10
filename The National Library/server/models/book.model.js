@@ -22,7 +22,7 @@ const BookSchema = new mongoose.Schema({
         default: 1
     },
 
-    comments: [{ body: String, date: Date }],
+    comments: [{ name: String, body: String, date: Date }],
     reserves: [
         {
             type: mongoose.Schema.Types.ObjectId,

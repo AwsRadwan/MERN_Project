@@ -2,17 +2,17 @@ const mongoose = require("mongoose");
 var uniqueValidator = require('mongoose-unique-validator');
 
 const BookSchema = new mongoose.Schema({
-	title: {
+    title: {
         type: String,
         required: [true, "Title is required !!"],
         minlength: [3, "Title Can't be less than 3"],
-		unique: true
+        unique: true
     },
-	author: {
+    author: {
         type: String,
         required: [true, "Title is required !!"],
     },
-	desc: {
+    desc: {
         type: String,
         required: [true, "Title is required !!"],
         minlength: [5, "Title Can't be less than 5"],
@@ -21,17 +21,14 @@ const BookSchema = new mongoose.Schema({
         type: Number,
         default: 1
     },
-    rcount: {
-        type: Number,
-        default: 0
-    },
+
     comments: [{ body: String, date: Date }],
     reserves: [
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "reserve.model"
-		}
-	]
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "reserve.model"
+        }
+    ]
 }, { timestamps: true, collection: 'books' });
 
 BookSchema.plugin(uniqueValidator);

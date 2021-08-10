@@ -1,16 +1,18 @@
-const express = require("express");
-var cors = require('cors');
+const express = require('express');
+const cors = require('cors');
 const app = express();
+
+
+require('dotenv').config();
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+
+require('./server/config/mongoose.config');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+require('./server/routes/user.routes')(app);
+
 const port = 8000;
-app.use(cors());
-
-// This will fire our mongoose.connect statement to initialize our database connection
-require("./server/config/mongoose.config");
-
-app.use(express.json(), express.urlencoded({ extended: true }));
-
-// This is where we import the users routes function from our user.routes.js file
-const AllMyUserRoutes = require("./server/routes/user.routes");
-AllMyUserRoutes(app);
-
-app.listen(port, () => console.log(`The server is all fired up on port:0 ${port}`));
+app.listen(port, () => console.log(`Listening on port: ${port}`) );

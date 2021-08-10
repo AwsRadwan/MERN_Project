@@ -1,14 +1,18 @@
+const Users = require('../controllers/user.controllers');
 const ReserveController = require("../controllers/reserve.controller");
 const BookController = require("../controllers/book.controller");
-const UserController = require("../controllers/user.controller");
+
+const { authenticate } = require('../config/jwt.config');
+
 
 module.exports = app => {
-  // User Routes
-  app.get("/api/users/", UserController.findAllUsers);
-  app.get("/api/users/:id", UserController.findOneSingleUser);
-  app.put("/api/users/update/:id", UserController.updateExistingUser);
-  app.post("/api/users/new", UserController.createNewUser);
-  app.delete("/api/users/delete/:id", UserController.deleteAnExistingUser);
+  app.post("/api/register", Users.register);
+  app.post("/api/login", Users.login);
+  app.get("/api/users", Users.getAll);
+  app.get("/api/get/:id", Users.findUser);
+  app.get("/api/logout", Users.logout);
+
+
 
   // Book Routes
   app.get("/api/books/", BookController.findAllBooks);

@@ -27,11 +27,11 @@ const theme = createTheme({
     },
 });
 
-function TheBlueButton({ value, handleOnClick, color }) {
+function TheBlueButton({ value, handleOnClick, color, type = 'button' }) {
     const classes = useStyles();
     return (
         <>
-            <ColorButton variant="contained" onClick={handleOnClick} className={classes.margin}>
+            <ColorButton variant="contained" type={type} onClick={handleOnClick} className={classes.margin}>
                 {value}
             </ColorButton>
             <ThemeProvider theme={theme} />

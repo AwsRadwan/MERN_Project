@@ -3,13 +3,20 @@ import Login from '../components/Login'
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import Form from '../components/Form';
+import TheInput from '../components/basic/TheInput';
+import TheBlueButton from '../components/basic/TheBlueButton'
+import { Router, Link } from "@reach/router"
+import BookForm from './BookForm';
+
+class Route extends React.PureComponent {
+    render() {
+        return <div>{this.props.children}</div>;
+    }
+}
 
 
-const useStyles = makeStyles((theme) => ({
-    Container: {
-        backgroundImage: `url(/img/AlfonsMorales.jpg)`
-    },
-}))
+
 const Admin = () => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
@@ -17,6 +24,7 @@ const Admin = () => {
     const [passwordErr, setPasswordErr] = useState('')
 
 
+    // Admin User Part
     const nameChangeHandle = (e) => {
         if (e.target.value.length > 3 || e.target.value.length === 0) {
 
@@ -41,16 +49,32 @@ const Admin = () => {
 
     }
 
-    const classes = useStyles();
+
+
+
     return (
-        <div className={classes.Container} >
-            <Login name={name} password={password}
-                nameChangeHandle={nameChangeHandle}
-                passwordChangeHandle={passwordChangeHandle}
-                nameErr={nameErr}
-                passwordErr={passwordErr}
-                submitHandle={submitHandle}
-            />
+        <div >
+            <Router>
+                <Login path='/admin'
+                    name={name} password={password}
+                    nameChangeHandle={nameChangeHandle}
+                    passwordChangeHandle={passwordChangeHandle}
+                    nameErr={nameErr}
+                    passwordErr={passwordErr}
+                    submitHandle={submitHandle}
+                />
+
+                <BookForm path='/admin/book/new' header='Add New Book' />
+
+
+
+
+
+
+
+
+            </Router>
+
         </div>
     )
 }

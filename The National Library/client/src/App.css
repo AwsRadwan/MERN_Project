@@ -44,3 +44,18 @@
   font-variant: inherit;
   
 }
+#mainpaper {
+  width: fit-content;
+  height: fit-content;
+  padding: 1%;
+  margin-top: 1%;
+  margin-left: 1%;
+  flex: 1;
+  background-color: bisque;
+  padding-right: 2%;
+}
+.sortedBokks {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-variant: inherit;
+}

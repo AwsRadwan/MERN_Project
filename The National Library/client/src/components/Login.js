@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Login({ name, password, nameChangeHandle, passwordChangeHandle, passwordErr, nameErr }) {
+export default function Login({ name, password, nameChangeHandle, passwordChangeHandle, passwordErr, nameErr, submitHandle }) {
     const classes = useStyles();
 
     return (
@@ -65,7 +65,7 @@ export default function Login({ name, password, nameChangeHandle, passwordChange
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form} noValidate onSubmit={submitHandle}>
                     <TheInput
 
                         label='Name'

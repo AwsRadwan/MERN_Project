@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Login from '../components/Login'
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,8 +34,11 @@ const Admin = () => {
         } else
             setPasswordErr('Password must be longer than 3 characters')
     }
-    const submitHandle = () => {
+    const submitHandle = (e) => {
+        e.preventDefault()
         axios.post("http://localhost:8000/api/login", { name, password })
+            .then(res => Cookies.set('userInfo', res))
+
     }
 
     const classes = useStyles();
@@ -45,6 +49,7 @@ const Admin = () => {
                 passwordChangeHandle={passwordChangeHandle}
                 nameErr={nameErr}
                 passwordErr={passwordErr}
+                submitHandle={submitHandle}
             />
         </div>
     )

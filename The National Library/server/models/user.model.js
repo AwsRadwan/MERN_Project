@@ -8,22 +8,13 @@ const bcrypt = require('bcrypt');
 // const userToken = jwt.sign(payload, process.env.SECRET_KEY);
 
 const UserSchema = new mongoose.Schema({
-  firstName: {
+  name: {
     type: String,
     required: [true, "First name is required"]
   },
-  lastName: {
-    type: String,
-    required: [true, "Last name is required"]
-  },
-  email: {
-    type: String,
-    required: [true, "Email is required"],
-    validate: {
-      validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
-      message: "Please enter a valid email"
-    }
-  },
+
+
+
   password: {
     type: String,
     required: [true, "Password is required"],

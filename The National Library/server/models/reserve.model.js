@@ -3,20 +3,20 @@ const validator = require('validator');
 
 
 const ReserveSchema = new mongoose.Schema({
-	name: {
+    name: {
         type: String,
         required: [true, "Name is required !!"],
         minlength: [3, "Name Can't be less than 3"],
     },
-	phone: {
+    phone: {
         type: Number,
         min: [10, "Phone Number Can't be less than 10"]
     },
     email: {
-		type: String,
-		required: [true, "Email is required !!"],
-		validate: [ validator.isEmail, 'invalid email !!' ]
-	},
+        type: String,
+        required: [true, "Email is required !!"],
+        validate: [validator.isEmail, 'invalid email !!']
+    },
     address: String,
     amount: {
         type: Number,
@@ -24,7 +24,7 @@ const ReserveSchema = new mongoose.Schema({
     },
     book: {
         type: mongoose.Schema.Types.ObjectId,
-		ref: "book.model"
+        ref: "book.model"
     }
 }, { timestamps: true, collection: 'reserves' });
 

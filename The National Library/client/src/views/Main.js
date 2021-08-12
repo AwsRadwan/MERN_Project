@@ -1,5 +1,4 @@
 import React from 'react'
-import BooksList from '../components/BooksList'
 import MainContainer from '../components/MainContainer'
 import Container from '../components/MainContainer'
 import Navbar from '../components/Navbar'
@@ -55,6 +54,7 @@ const Main = () => {
 
     return (
         <div>
+            <Navbar />
             <MainContainer 
                 data={[...data]}
             />

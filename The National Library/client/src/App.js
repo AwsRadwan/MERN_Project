@@ -27,7 +27,7 @@ function App() {
       <Router>
 <<<<<<< HEAD
         <Admin path="/admin/login" />
-        <Main  path="/"/>
+        <Main path="/" />
         <ThisBook path="book/:title" />
 =======
         <Admin path="/admin/*" />

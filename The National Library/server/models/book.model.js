@@ -17,11 +17,11 @@ const BookSchema = new mongoose.Schema({
         required: [true, "Description is required !!"],
         minlength: [5, "Description Can't be less than 5"],
     },
-    price: {
-        type: Number,
-        default: 1
+    imges: { type: String },
+    category: {
+        type: String,
+        enum: ['Programming Books', 'Science Books', 'Palestinian novels', 'kids books', 'Arabic novels']
     },
-    img: String,
 
     comments: [{ name: String, body: String, date: Date }],
     reserves: [

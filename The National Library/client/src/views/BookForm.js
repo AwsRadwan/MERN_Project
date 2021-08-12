@@ -3,6 +3,11 @@ import TheInput from '../components/basic/TheInput'
 import TheBlueButton from '../components/basic/TheBlueButton'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+
 
 const useStyles = makeStyles((theme) => ({
     Container: {
@@ -28,7 +33,7 @@ const BookForm = (props) => {
     const [bookAuthor, setBookAuthor] = useState('')
     const [bookAuthorErr, setBookAuthorErr] = useState('')
     const [submitErr, setSubmitErr] = useState([])
-    const [bookPrice, setBookPrice] = useState('')
+    const [bookCategory, setBookCategory] = useState('')
     const [bookImg, setBookImg] = useState('')
 
 
@@ -61,8 +66,8 @@ const BookForm = (props) => {
         setBookImg(e.target.value)
 
     }
-    const bookPriceChangeHandle = (e) => {
-        setBookPrice(e.target.value)
+    const bookCategoryChangeHandle = (e) => {
+        setBookCategory(e.target.value)
 
     }
     const submitHandle = (e) => {
@@ -71,14 +76,14 @@ const BookForm = (props) => {
             'title': bookTitle,
             'desc': bookDesc,
             'author': bookAuthor,
-            'price': bookPrice,
+            'category': bookCategory,
             'img': bookImg
 
         }).then(res => {
             setBookTitle('')
             setBookAuthor('')
             setBookDesc('')
-            setBookPrice('')
+            setBookCategory('')
             setBookImg('')
             setSubmitErr('')
             // errorResponse[key].message
@@ -123,14 +128,27 @@ const BookForm = (props) => {
                     err={bookDescErr}
 
                 />
-                <TheInput
-                    label='Book Price'
-                    value={bookPrice}
-                    handleChange={bookPriceChangeHandle}
-                    required={false}
 
-
-                />
+                <FormControl required className={classes.formControl}>
+                    <InputLabel htmlFor="age-native-required">Category</InputLabel>
+                    <Select
+                        native
+                        value={bookCategory}
+                        onChange={bookCategoryChangeHandle}
+                        name="age"
+                        inputProps={{
+                            id: 'age-native-required',
+                        }}
+                    >
+                        <option aria-label="None" value="" />
+                        <option value='Programming Books'>Programming Books</option>
+                        <option value='Science Books'>Science Books</option>
+                        <option value='Palestinian novels'>Palestinian novels</option>
+                        <option value='kids books'>kids books</option>
+                        <option value='Arabic novels'>Arabic novels</option>
+                    </Select>
+                    <FormHelperText>Required</FormHelperText>
+                </FormControl>
                 <TheInput
                     label='Book Image'
                     value={bookImg}

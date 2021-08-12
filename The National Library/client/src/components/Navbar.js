@@ -9,9 +9,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link, navigate } from "@reach/router";
-// import { PromiseProvider } from 'mongoose';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import Cookies from 'js-cookie';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,6 +39,7 @@ const Navbar = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  console.log(Cookies.get('userInfo') === undefined)
 
   return (
     <div className={classes.root}>
@@ -55,12 +56,12 @@ const Navbar = (props) => {
             <Link to="/aboutus" className="links" >About us</Link>
           </Typography>
           <Typography variant="h6" className={classes.title}>
-          <Button color='inherit' className="navbutton" variant="text" size="large" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          Categories
-          </Button>
+            <Button color='inherit' className="navbutton" variant="text" size="large" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+              <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                <MenuIcon />
+              </IconButton>
+              Categories
+            </Button>
           </Typography>
           <Menu
             id="simple-menu"
@@ -69,16 +70,21 @@ const Navbar = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-          {
-            props.categories && props.categories.map((c, i) => {
-              return(
-                <MenuItem key={i} onClick={(c) => props.setBooks(props.books.filter(x => x.category === c))}>{c}</MenuItem>
-              );
-            })
-          }
+            {
+              props.categories && props.categories.map((c, i) => {
+                return (
+                  <MenuItem key={i} onClick={(c) => props.setBooks(props.books.filter(x => x.category === c))}>{c}</MenuItem>
+                );
+              })
+            }
           </Menu>
           <AccountCircleOutlinedIcon />
-          <Button color="inherit">Login as Admin</Button>
+          {Cookies.get('userInfo') !== undefined ?
+            <Button color="inherit" onClick={() => navigate('/admin/logout ')}>Logout</Button> :
+            <Button color="inherit" onClick={() => navigate('/admin/login')}>Login as Admin</Button>
+
+
+          }
         </Toolbar>
       </AppBar>
     </div>

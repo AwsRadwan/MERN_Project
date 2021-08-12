@@ -25,14 +25,9 @@ function App() {
       <Admin />
 
       <Router>
-<<<<<<< HEAD
         <Admin path="/admin/login" />
         <Main path="/" />
         <ThisBook path="book/:title" />
-=======
-        <Admin path="/admin/*" />
-        <Main path="/" />
->>>>>>> bcce5b2499544897c231c99bc1cf0f2ce0ef96df
       </Router>
     </div>
   );

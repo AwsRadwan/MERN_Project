@@ -26,6 +26,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const categories = [
+  'Cate 1',
+  'Cate 2',
+  'Cate 3',
+  'Cate 4',
+  'Cate 5',
+  'Cate 6',
+]
+
 const Navbar = (props) => {
 
   const classes = useStyles();
@@ -47,7 +56,7 @@ const Navbar = (props) => {
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton> */}
-          <MenuBookIcon />
+          <Link to="/" className="links" ><MenuBookIcon /></Link>
           <Typography variant="h6" className={classes.title}>
             <Link to="/" className="links" >Home</Link>
           </Typography>
@@ -70,7 +79,7 @@ const Navbar = (props) => {
             onClose={handleClose}
           >
           {
-            props.categories && props.categories.map((c, i) => {
+            categories && categories.map((c, i) => {
               return(
                 <MenuItem key={i} onClick={(c) => props.setBooks(props.books.filter(x => x.category === c))}>{c}</MenuItem>
               );

@@ -20,7 +20,7 @@ const BookSchema = new mongoose.Schema({
     imges: { type: String },
     category: {
         type: String,
-        enum: ['Programming Books', 'Science Books', 'Palestinian novels', 'kids books', 'Arabic novels']
+        enum: ['Other', 'Programming Books', 'Science Books', 'Palestinian novels', 'kids books', 'Arabic novels']
     },
 
     comments: [{ name: String, body: String, date: Date }],

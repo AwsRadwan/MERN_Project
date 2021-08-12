@@ -146,6 +146,7 @@ const BookForm = (props) => {
                         <option value='Palestinian novels'>Palestinian novels</option>
                         <option value='kids books'>kids books</option>
                         <option value='Arabic novels'>Arabic novels</option>
+                        <option value='Other'>Other</option>
                     </Select>
                     <FormHelperText>Required</FormHelperText>
                 </FormControl>

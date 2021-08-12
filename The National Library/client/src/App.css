@@ -59,3 +59,45 @@
   font-style: italic;
   font-variant: inherit;
 }
+
+#aboutUs {
+  background-color: antiquewhite;
+  width: 70%;
+  margin: auto;
+}
+#aboutUs h1{
+  color: red;
+  font-family: cursive;
+}
+#aboutUs p {
+  font-size: larger;
+  font-weight: bold;
+}
+#mission {
+  background-color: antiquewhite;
+  width: 70%;
+  margin: auto;
+}
+#mission p {
+  font-size: larger;
+  font-weight: bold;
+}
+#mission h2 {
+
+  color: red;
+  font-family: cursive;
+}
+#address {
+  background-color: antiquewhite;
+  width: 70%;
+  margin: auto;
+
+}
+#address h2 {
+  color: red;
+  font-family: cursive;
+}
+#address p {
+  font-size: larger;
+  font-weight: bold;
+}

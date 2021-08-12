@@ -93,3 +93,9 @@
   background-color: bisque;
   border-radius: 20px;
 }
+#noData {
+  color: red;
+  font-size: x-large;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-style: italic;
+}

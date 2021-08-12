@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Login({ name, password, nameChangeHandle, passwordChangeHandle, passwordErr, nameErr }) {
+export default function Login({ name, password, nameChangeHandle, passwordChangeHandle, passwordErr, nameErr, submitHandle }) {
     const classes = useStyles();
 
     return (
@@ -65,7 +65,7 @@ export default function Login({ name, password, nameChangeHandle, passwordChange
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form className={classes.form} noValidate>
+                <form className={classes.form} noValidate onSubmit={submitHandle}>
                     <TheInput
 
                         label='Name'
@@ -82,28 +82,6 @@ export default function Login({ name, password, nameChangeHandle, passwordChange
                         err={passwordErr}
 
                     />
-                    {/* <TextField 
-                    //     variant="outlined"
-                    //     margin="normal"
-                    //     required
-                    //     fullWidth
-                    //     id="email"
-                    //     label="Email Address"
-                    //     name="email"
-                    //     autoComplete="email"
-                    //     autoFocus
-                    // />
-                    // <TextField
-                    //     variant="outlined"
-                    //     margin="normal"
-                    //     required
-                    //     fullWidth
-                    //     name="password"
-                    //     label="Password"
-                    //     type="password"
-                    //     id="password"
-                    //     autoComplete="current-password"
-                    // />*/}
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"

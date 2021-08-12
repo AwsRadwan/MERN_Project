@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextField } from '@material-ui/core'
 
-function TheInput({ label, value, handleChange, err }) {
+function TheInput({ label, value, handleChange, err = '', required }) {
     return (
         <div>
             {err.length === 0 ?
@@ -10,7 +10,7 @@ function TheInput({ label, value, handleChange, err }) {
                     label={label}
                     value={value} onChange={handleChange}
                     margin="normal"
-                    required
+                    required={required}
                     fullWidth />
                 : <TextField
                     error
@@ -21,7 +21,7 @@ function TheInput({ label, value, handleChange, err }) {
                     variant="outlined"
                     onChange={handleChange}
                     margin="normal"
-                    required
+                    required={required}
                     fullWidth
 
                 />}

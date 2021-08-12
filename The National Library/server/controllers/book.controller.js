@@ -15,13 +15,13 @@ module.exports.findOneSingleBook = (req, res) => {
 module.exports.createNewBook = (req, res) => {
     Book.create(req.body)
         .then(newlyCreatedBook => res.json({ Book: newlyCreatedBook }))
-        .catch(err => res.json({ message: "Something went wrong", error: err }));
+        .catch(err => res.status(400).json({ message: "Something went wrong", error: err }));
 };
 
 module.exports.updateExistingBook = (req, res) => {
     Book.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
         .then(updatedBook => res.json({ Book: updatedBook }))
-        .catch(err => res.json({ message: "Something went wrong", error: err }));
+        .catch(err => res.status(400).json({ message: "Something went wrong", error: err }));
 };
 
 module.exports.deleteAnExistingBook = (req, res) => {
@@ -32,10 +32,10 @@ module.exports.deleteAnExistingBook = (req, res) => {
 module.exports.updateExistingBookReserve = (req, res) => {
     Book.findOneAndUpdate({ _id: req.params.id }, { $push: { reserves: req.body.id } }, { new: true })
         .then(updatedBook => res.json({ Book: updatedBook }))
-        .catch(err => res.json({ message: "Something went wrong", error: err }));
+        .catch(err => res.status(400).json({ message: "Something went wrong", error: err }));
 };
 module.exports.updateExistingBookComment = (req, res) => {
     Book.findOneAndUpdate({ _id: req.params.id }, { $push: { comments: req.body } }, { new: true })
         .then(updatedBook => res.json({ Book: updatedBook }))
-        .catch(err => res.json({ message: "Something went wrong", error: err }));
+        .catch(err => res.status(400).json({ message: "Something went wrong", error: err }));
 };

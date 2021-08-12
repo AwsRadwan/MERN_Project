@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import Login from '../components/Login'
-import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import { Router, navigate, Redirect } from "@reach/router"
+import BookForm from './BookForm';
+import Logout from '../components/Logout'
+import Navbar from '../components/Navbar'
 
 
-const useStyles = makeStyles((theme) => ({
-    Container: {
-        backgroundImage: `url(/img/AlfonsMorales.jpg)`
-    },
-}))
+
+
 const Admin = () => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
@@ -17,6 +17,7 @@ const Admin = () => {
     const [passwordErr, setPasswordErr] = useState('')
 
 
+    // Admin User Part
     const nameChangeHandle = (e) => {
         if (e.target.value.length > 3 || e.target.value.length === 0) {
 
@@ -34,23 +35,46 @@ const Admin = () => {
         } else
             setPasswordErr('Password must be longer than 3 characters')
     }
-    const submitHandle = (e) => {
+    const logInHandle = (e) => {
         e.preventDefault()
         axios.post("http://localhost:8000/api/login", { name, password })
-            .then(res => Cookies.set('userInfo', res))
+            .then(res => {
+                setNameErr('')
+                Cookies.set('userInfo', res.data.user._id)
+                navigate('/')
+            }).catch(err => err.response.data.includes('Bad') && setNameErr('Name or Password is incorrect'))
 
     }
+    Cookies.get('userInfo')
 
-    const classes = useStyles();
+
+
     return (
-        <div className={classes.Container} >
-            <Login name={name} password={password}
-                nameChangeHandle={nameChangeHandle}
-                passwordChangeHandle={passwordChangeHandle}
-                nameErr={nameErr}
-                passwordErr={passwordErr}
-                submitHandle={submitHandle}
-            />
+        <div >
+            <Navbar />
+            <Router>
+
+                <Login path='/login'
+                    name={name} password={password}
+                    nameChangeHandle={nameChangeHandle}
+                    passwordChangeHandle={passwordChangeHandle}
+                    nameErr={nameErr}
+                    passwordErr={passwordErr}
+                    submitHandle={logInHandle}
+                />
+                <Logout path='/logout' />
+
+                <BookForm path='/book/new' header='Add New Book' />
+
+
+
+
+
+
+
+
+            </Router>
+
         </div>
     )
 }

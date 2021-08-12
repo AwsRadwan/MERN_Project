@@ -13,10 +13,13 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import TheInput from './basic/TheInput'
+import Cookies from 'js-cookie'
+import { navigate } from '@reach/router';
 
 
 
 function Copyright() {
+
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
@@ -53,7 +56,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login({ name, password, nameChangeHandle, passwordChangeHandle, passwordErr, nameErr, submitHandle }) {
+
     const classes = useStyles();
+
+
+
+
+
+
+
+
+
+
 
     return (
         <Container component="main" maxWidth="xs" className={classes.Container}>
@@ -82,28 +96,6 @@ export default function Login({ name, password, nameChangeHandle, passwordChange
                         err={passwordErr}
 
                     />
-                    {/* <TextField 
-                    //     variant="outlined"
-                    //     margin="normal"
-                    //     required
-                    //     fullWidth
-                    //     id="email"
-                    //     label="Email Address"
-                    //     name="email"
-                    //     autoComplete="email"
-                    //     autoFocus
-                    // />
-                    // <TextField
-                    //     variant="outlined"
-                    //     margin="normal"
-                    //     required
-                    //     fullWidth
-                    //     name="password"
-                    //     label="Password"
-                    //     type="password"
-                    //     id="password"
-                    //     autoComplete="current-password"
-                    // />*/}
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"

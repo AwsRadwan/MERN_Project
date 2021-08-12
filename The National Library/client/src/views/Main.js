@@ -3,6 +3,7 @@ import BooksList from '../components/BooksList'
 import MainContainer from '../components/MainContainer'
 import Container from '../components/MainContainer'
 import Navbar from '../components/Navbar'
+
 import TopBooks from '../components/TopBooks'
 
 const data = [
@@ -52,6 +53,7 @@ const data = [
 
 
 const Main = () => {
+
     return (
         <div>
             <Navbar />
@@ -62,6 +64,8 @@ const Main = () => {
                 productResponsive={{ xs: 12, sm: 8, md: 6 }}
                 data={[...data]}
             />
+
+            <TopBooks />
         </div>
     )
 }

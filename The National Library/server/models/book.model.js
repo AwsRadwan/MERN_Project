@@ -10,16 +10,17 @@ const BookSchema = new mongoose.Schema({
     },
     author: {
         type: String,
-        required: [true, "Title is required !!"],
+        required: [true, "Author is required !!"],
     },
     desc: {
         type: String,
-        required: [true, "Title is required !!"],
-        minlength: [5, "Title Can't be less than 5"],
+        required: [true, "Description is required !!"],
+        minlength: [5, "Description Can't be less than 5"],
     },
-    price: {
-        type: Number,
-        default: 1
+    imges: { type: String },
+    category: {
+        type: String,
+        enum: ['Other', 'Programming Books', 'Science Books', 'Palestinian novels', 'kids books', 'Arabic novels']
     },
 
     comments: [{ name: String, body: String, date: Date }],

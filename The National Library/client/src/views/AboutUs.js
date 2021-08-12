@@ -1,8 +1,10 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
 
 const AboutUs = () => {
     return (
         <>
+        <Navbar />
         <div id="aboutUs">
             <h1>The National Library</h1>
             <p>

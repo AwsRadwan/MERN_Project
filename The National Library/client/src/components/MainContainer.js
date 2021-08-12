@@ -1,6 +1,4 @@
 import React from 'react'
-import Container from '@material-ui/core/Container';
-import { Row, Col } from "antd";
 import TopBooks from './TopBooks';
 import CategorySelector from './CategorySelector';
 import BooksList from './BooksList';

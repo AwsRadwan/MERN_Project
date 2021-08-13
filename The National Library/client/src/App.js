@@ -22,7 +22,7 @@ function App() {
 
 
 
-      <Admin />
+
 
       <Router>
         <Admin path="/admin/login" />

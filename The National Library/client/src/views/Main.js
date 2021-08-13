@@ -57,7 +57,7 @@ const Main = () => {
     return (
         <div>
             <Navbar />
-            <MainContainer 
+            <MainContainer
                 fiveColumn
                 shopSidebarResponsive={{ xs: 24, lg: 4 }}
                 shopContentResponsive={{ xs: 24, lg: 20 }}
@@ -65,7 +65,7 @@ const Main = () => {
                 data={[...data]}
             />
 
-            <TopBooks />
+
         </div>
     )
 }

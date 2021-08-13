@@ -27,8 +27,8 @@ const BookBox = ({book}) => {
     return (
         <div class="product-layout product-grid col-lg-3 col-md-4 col-sm-6 col-xs-12 cols">
             <div class="product-thumb">
-                <Card className={classes.root}>
-                <CardActionArea onClick={e => navigate('/book/'+book.title)} >
+                <Card className={classes.root} id="BokBox">
+                <CardActionArea onClick={e => navigate('/book/'+book._id)} >
                     <CardMedia
                     component="img"
                     alt="Contemplative Reptile"

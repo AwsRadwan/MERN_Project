@@ -7,6 +7,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import { navigate } from '@reach/router';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -77,17 +78,23 @@ const BookForm = (props) => {
             'desc': bookDesc,
             'author': bookAuthor,
             'category': bookCategory,
-            'img': bookImg
-
-        }).then(res => {
+            'imges': bookImg
+        })
+        .then(res => {
+            props.setData({
+                'title': bookTitle,
+                'desc': bookDesc,
+                'author': bookAuthor,
+                'category': bookCategory,
+                'imges': bookImg
+            })
             setBookTitle('')
             setBookAuthor('')
             setBookDesc('')
             setBookCategory('')
             setBookImg('')
             setSubmitErr('')
-            // errorResponse[key].message
-
+            navigate('/')
         }).catch(err => {
             const errorResponse = err.response.data.error.errors; // Get the errors from err.response.data
             for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
@@ -95,8 +102,6 @@ const BookForm = (props) => {
                 errorResponse[key].message.includes('Author ') && setBookAuthorErr(errorResponse[key].message)
                 errorResponse[key].message.includes('Description ') && setBookDescErr(errorResponse[key].message)
             }
-
-
         })
     }
     const classes = useStyles()

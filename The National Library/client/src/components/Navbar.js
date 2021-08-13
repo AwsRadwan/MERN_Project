@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -26,20 +26,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const categories = [
-  'Cate 1',
-  'Cate 2',
-  'Cate 3',
-  'Cate 4',
-  'Cate 5',
-  'Cate 6',
-]
+const categories=[
+  'All', 
+  'Programming Books', 
+  'Science Books', 
+  'Palestinian novels', 
+  'kids books', 
+  'Arabic novels', 
+  'Other'
+];
 
-const Navbar = (props) => {
+const Navbar = ({data, setData}) => {
 
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [allData, setAllData] = useState([...data]);
+
+  const handleClickCate = (value) => {
+    if(value !== 'All'){
+        setData(allData.filter(book => book.category === value));
+        console.log("11111");
+    }
+    else {
+        setData([...allData]);
+        console.log("22222");
+    }
+    setAnchorEl(null);
+    console.log(data);
+    console.log(allData);
+    // navigate('/');
+    }
+
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -52,7 +70,7 @@ const Navbar = (props) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" id="NavBaR">
         <Toolbar>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
@@ -82,7 +100,7 @@ const Navbar = (props) => {
           {
             categories && categories.map((c, i) => {
               return(
-                <MenuItem key={i} onClick={(c) => props.setBooks(props.books.filter(x => x.category === c))}>{c}</MenuItem>
+                <MenuItem value={c} key={i} onClick={() => handleClickCate(c)}>{c}</MenuItem>
               );
             })
           }
@@ -90,9 +108,7 @@ const Navbar = (props) => {
           <AccountCircleOutlinedIcon />
           {Cookies.get('userInfo') !== undefined ?
             <Button color="inherit" onClick={() => navigate('/admin/logout ')}>Logout</Button> :
-            <Button color="inherit" onClick={() => navigate('/admin/login')}>Login as Admin</Button>
-
-
+            <Button variant="h6" color="inherit" onClick={() => navigate('/admin/login')}>Login as Admin</Button>
           }
         </Toolbar>
       </AppBar>

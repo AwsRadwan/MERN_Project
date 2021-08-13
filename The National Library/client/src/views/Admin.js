@@ -10,7 +10,10 @@ import Navbar from '../components/Navbar'
 
 
 
-const Admin = () => {
+const Admin = ({
+    data,
+    setData
+}) => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [nameErr, setNameErr] = useState('')
@@ -51,10 +54,12 @@ const Admin = () => {
 
     return (
         <div >
-            <Navbar />
+            <Navbar 
+                data={[...data]}
+                setData={setData}
+            />
             <Router>
-
-                <Login path='/login'
+                <Login path='*/login'
                     name={name} password={password}
                     nameChangeHandle={nameChangeHandle}
                     passwordChangeHandle={passwordChangeHandle}
@@ -63,18 +68,8 @@ const Admin = () => {
                     submitHandle={logInHandle}
                 />
                 <Logout path='/logout' />
-
-                <BookForm path='/book/new' header='Add New Book' />
-
-
-
-
-
-
-
-
+                <BookForm setData={setData} path='/book/new' header='Add New Book' />
             </Router>
-
         </div>
     )
 }

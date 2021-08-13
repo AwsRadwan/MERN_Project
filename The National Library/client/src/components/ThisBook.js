@@ -5,6 +5,9 @@ import axios from 'axios';
 import Spinner from 'react-bootstrap/Spinner'
 import dateFormat from 'dateformat';
 import Button from '@material-ui/core/Button';
+// import { Socket } from 'socket.io';
+import io, { Socket } from "socket.io-client";
+import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 
 const ThisBook = ({id}) => {
     const [book, setBook] = useState(null);
@@ -13,6 +16,8 @@ const ThisBook = ({id}) => {
     const [iComment, setIComment] = useState('');
     const [iCommentErr, setICommentErr] = useState('');
     const [bookComments, setBookComments] = useState([]);
+    const [socket] = useState(() => io(':8000'));
+    const [comNum, setComNum] = useState(0);
 
 
     useEffect(
@@ -21,6 +26,7 @@ const ThisBook = ({id}) => {
                 .then(res => {
                     setBook(res.data.Book);
                     setBookComments(res.data.Book.comments);
+                    setComNum(res.data.Book.comments.length);
                     console.log(res.data.Book.title)
             })
         }, []
@@ -60,21 +66,35 @@ const ThisBook = ({id}) => {
 
     const onSubmitHandler = e => {
         e.preventDefault();
-        if(nameErr.length <=1 && iCommentErr.length <= 1 && name.length >0 && iComment.lenght >0){
-            axios.post('http://localhost:8000/api/books/addcomment/' + id, {
+        if(nameErr.length <=1 && iCommentErr.length <= 1 && iComment.length > 0 && name.length > 0){
+            axios.put('http://localhost:8000/api/books/addcomment/' + id, {
             name, body: iComment, date: new Date()
             })
             .then(res=>{
+                socket.emit('newMessage', {name, body: iComment, date: new Date()});
+                setBookComments([...bookComments, {name, body: iComment, date: new Date()}]);
+                setComNum(comNum + 1);
                 console.log(res);
                 setname("");
                 setIComment("");
-                setBookComments(res.data.Book.comments);
             })
             .catch( (err) => {
                 console.log(err.response);
             })
         }
+        else {
+            if(iComment.length <= 1) {
+                setICommentErr("Empty Comment !!");
+            }
+            if(name.length <= 1){
+                setNameErr("Name is Required !!");
+            }
+        }
     }
+
+    useEffect(() => {
+        socket.on('sendMessageToClient', message => setBookComments(messages => { return [ ...messages, message ]; }));
+    }, []);
 
     return (
         <div class="col-md-9 col-sm-9 col-xs-12" id="thisBookk">
@@ -129,18 +149,19 @@ const ThisBook = ({id}) => {
                     </div>
                 </div>
                 <div class="comment-block-wrapper mb--50">
-                    <h3>{book.comments ? book.comments.length : 0} Comments</h3>
+                    <h3>{book.comments ? comNum : 0} Comments</h3>
                     {
                         bookComments ? bookComments.map(
                             (comment, i) => {
                                 return(
                                     <div class="single-comment">
                                         <div class="comment-avatar">
-                                            <img src="image/icon/author-logo.png" alt="" />
+                                            {/* <img src="image/icon/author-logo.png" alt="" /> */}
+                                            <PersonOutlineIcon />
                                         </div>
                                         <div class="comment-text">
                                             <h5 class="author"> <a href="#"> {comment.name} </a></h5>
-                                            <span class="time">{dateFormat(comment.date, "mmmm dS, yyyy")}</span>
+                                            <span class="time">{dateFormat(comment.date, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</span>
                                             <p>{comment.body}</p>
                                         </div>
                                     </div>
@@ -153,24 +174,32 @@ const ThisBook = ({id}) => {
                 </div>
                 <div class="replay-form-wrapper">
                     <h3 class="mt-0">LEAVE A COMMENT</h3>
-                    <form action="./" class="blog-form">
+                    <form onKeyPress={(e) => e.key === 'Enter' && onSubmitHandler} onSubmit={onSubmitHandler} class="blog-form">
                         <div class="row">
                         <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="name">Your Name *</label>
-                                    <input onChange={(e)=>validateName(e.target.value)} value={name} type="text" id="name" class="form-control" />
+                                    <input onKeyPress={(e) => e.key === 'Enter' && onSubmitHandler} onChange={(e)=>validateName(e.target.value)} value={name} type="text" id="name" class="form-control" />
+                                    {
+                                    nameErr && 
+                                        <p style={{color: 'red'}}>{nameErr}</p>
+                                    }
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="message">Comment</label>
-                                    <textarea onChange={(e)=>validateComment(e.target.value)} value={iComment} name="message" id="message" cols="30" rows="4"
+                                    <textarea onKeyPress={(e) => e.key === 'Enter' && onSubmitHandler} onChange={(e)=>validateComment(e.target.value)} value={iComment} name="message" id="message" cols="30" rows="4"
                                         class="form-control"></textarea>
+                                    {
+                                    iCommentErr && 
+                                        <p style={{color: 'red'}}>{iCommentErr}</p>
+                                    }
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="submit-btn">
-                                <Button onClick={onSubmitHandler} variant="contained" className="btn btn-black" color="primary">
+                                <Button type="submit" variant="contained" className="btn btn-black" color="primary">
                                 Post Comment
                                 </Button>
                                 </div>

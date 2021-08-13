@@ -40,7 +40,7 @@
 }
 .links {
   /* color: inherit; */
-  color: white;
+  color: black;
   text-decoration: none;
 }
 .navbutton {
@@ -54,7 +54,7 @@
   margin-top: 5%;
   margin-left: 5%;
   flex: 1;
-  background-color: bisque;
+  background-color: rgba(255,228,196,0.8);
   padding-right: 2%;
 }
 .sortedBokks {
@@ -77,7 +77,7 @@
 }
 .catebox {
   padding: 2%;
-  background-color: bisque;
+  /* background-color: rgba(255,228,196,0.6); */
   border-radius: 20px;
   margin: auto;
 }
@@ -90,12 +90,32 @@
 }
 #thisBookk {
   margin: auto;
-  background-color: bisque;
+  background-color: rgba(255,228,196,0.8);
   border-radius: 20px;
+  margin-top: 20px;
 }
 #noData {
   color: red;
   font-size: x-large;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-style: italic;
+}
+
+footer {
+  background-color: rgba(255,228,196,0.8);
+  border-top-left-radius: 180px;
+  border-top-right-radius: 180px;
+  width: 95%;
+  margin: auto;
+}
+
+#NavBaR {
+  background-color: rgba(255,228,196);
+  color: black;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+#BokBox {
+  background-color: rgba(255,228,196,0.8);
 }

@@ -32,14 +32,15 @@ const CategorySelector = ({
 }) => {
     const classes = useStyles();
     const [clickedItem, setClickedItem] = useState('All');
+    const [allData, setAllData] = useState(data);
 
     const handleClick = (value) => {
         setClickedItem(value);
         if(value !== 'All' && data){
-            setData(data.filter(book => book.category === value));
+            setData(allData.filter(book => book.category === value));
         }
         else {
-            setData([...data]);
+            setData([...allData]);
         }
         // this.setState({
         //   clickedItem: item.id

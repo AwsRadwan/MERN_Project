@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import MainContainer from '../components/MainContainer'
 import Container from '../components/MainContainer'
 import Navbar from '../components/Navbar'

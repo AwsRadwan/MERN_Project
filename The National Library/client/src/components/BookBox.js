@@ -10,6 +10,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import CreateIcon from '@material-ui/icons/Create';
+import CategoryIcon from '@material-ui/icons/Category';
 
 const useStyles = makeStyles({
   root: {
@@ -26,12 +28,12 @@ const BookBox = ({book}) => {
         <div class="product-layout product-grid col-lg-3 col-md-4 col-sm-6 col-xs-12 cols">
             <div class="product-thumb">
                 <Card className={classes.root}>
-                <CardActionArea>
+                <CardActionArea onClick={e => navigate('/book/'+book.title)} >
                     <CardMedia
                     component="img"
                     alt="Contemplative Reptile"
                     height="160"
-                    image="https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=754&h=502&fit=crop&dpr=1"
+                    image={book.imges}
                     title={book.title}
                     />
                     <CardContent>
@@ -39,7 +41,7 @@ const BookBox = ({book}) => {
                         {book.title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {book.desc}
+                        <CreateIcon /> The Author: {book.author} / <CategoryIcon /> {book.category}
                     </Typography>
                     </CardContent>
                 </CardActionArea>

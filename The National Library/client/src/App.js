@@ -5,13 +5,12 @@ import './css/main.css';
 import './App.css';
 
 
-import CommentForm from './components/CommentForm';
-
 import Admin from './views/Admin';
 import Cookies from 'js-cookie'
 import { Router } from "@reach/router"
 import Main from './views/Main';
-import ThisBook from './components/ThisBook';
+import OneBook from './views/OneBook';
+import AboutUs from './views/AboutUs';
 
 
 function App() {
@@ -27,7 +26,8 @@ function App() {
       <Router>
         <Admin path="/admin/login" />
         <Main path="/" />
-        <ThisBook path="book/:title" />
+        <OneBook path="book/:title" />
+        <AboutUs path="/aboutus" />
       </Router>
     </div>
   );

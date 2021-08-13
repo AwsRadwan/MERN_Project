@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
 .App {
   text-align: center;
+  background-image:url('./img/AlfonsMorales.jpg');
 }
 
 .App-logo {
@@ -92,4 +93,10 @@
   margin: auto;
   background-color: bisque;
   border-radius: 20px;
+}
+#noData {
+  color: red;
+  font-size: x-large;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-style: italic;
 }

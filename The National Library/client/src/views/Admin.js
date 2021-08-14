@@ -58,7 +58,7 @@ const Admin = ({
 
     return (
         <div >
-            <Navbar 
+            <Navbar
                 data={[...data]}
                 setData={setData}
             />

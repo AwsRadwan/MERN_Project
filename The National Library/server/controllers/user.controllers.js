@@ -33,7 +33,7 @@ module.exports.register = (req, res) => {
 }
 
 module.exports.login = async (req, res) => {
-    const user = await User.findOne({ email: req.body.email })
+    const user = await User.findOne({ name: req.body.name })
         .catch(err => res.status(400).json(err));
     if (user === null) {
         return res.sendStatus(400);
@@ -42,6 +42,7 @@ module.exports.login = async (req, res) => {
     if (!correctPassword) {
         return res.sendStatus(400);
     }
+    console.log(correctPassword)
     const userToken = jwt.sign({
         id: user._id
     }, process.env.FIRST_SECRET_KEY);

@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextField } from '@material-ui/core'
 
-function TheInput({ label, value, handleChange, err = '', required }) {
+function TheInput({ label, value, handleChange, err = '', required, type }) {
     return (
         <div>
             {err.length === 0 ?
@@ -11,7 +11,8 @@ function TheInput({ label, value, handleChange, err = '', required }) {
                     value={value} onChange={handleChange}
                     margin="normal"
                     required={required}
-                    fullWidth />
+                    fullWidth
+                    type={type} />
                 : <TextField
                     error
                     id="outlined-error-helper-text"

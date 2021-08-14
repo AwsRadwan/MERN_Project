@@ -75,11 +75,11 @@ const Main = ({
     return (
         <div>
             <Navbar 
-                data={[...data]}
+                data={data}
                 setData={setData}
             />
                 <MainContainer 
-                data={[...data]}
+                data={data}
                 setData={setData}
             />
             <Footer />

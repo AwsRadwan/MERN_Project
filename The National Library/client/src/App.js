@@ -52,9 +52,9 @@ function App() {
       {
         (loadedB && loadedR) ?
         <Router>
-          <Admin reserves={allReserves} setReserves={setAllReserves} data={allBooks} setData={setAllBooks} path="/admin" />
+          <Admin reserves={allReserves} setReserves={setAllReserves} data={allBooks} setData={setAllBooks} path="/admin/*" />
           <Main data={allBooks} setData={setAllBooks}  path="/"/>
-          <OneBook data={allBooks} setData={setAllBooks} path="book/:id" />
+          <OneBook data={allBooks} setData={setAllBooks} path="/book/:id" />
           <AboutUs data={allBooks} setData={setAllBooks} path="/aboutus" />
           <ReserveOrders path="/reserve/:id" />
         </Router>

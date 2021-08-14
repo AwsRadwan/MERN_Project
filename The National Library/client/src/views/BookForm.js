@@ -33,7 +33,7 @@ const BookForm = (props) => {
     const [bookDescErr, setBookDescErr] = useState('')
     const [bookAuthor, setBookAuthor] = useState('')
     const [bookAuthorErr, setBookAuthorErr] = useState('')
-    const [submitErr, setSubmitErr] = useState([])
+    // const [submitErr, setSubmitErr] = useState([])
     const [bookCategory, setBookCategory] = useState('')
     const [bookImg, setBookImg] = useState('')
 
@@ -81,19 +81,13 @@ const BookForm = (props) => {
             'imges': bookImg
         })
         .then(res => {
-            props.setData({
-                'title': bookTitle,
-                'desc': bookDesc,
-                'author': bookAuthor,
-                'category': bookCategory,
-                'imges': bookImg
-            })
+            props.setData([...props.data, res.data.Book])
             setBookTitle('')
             setBookAuthor('')
             setBookDesc('')
             setBookCategory('')
             setBookImg('')
-            setSubmitErr('')
+            // setSubmitErr('')
             navigate('/')
         }).catch(err => {
             const errorResponse = err.response.data.error.errors; // Get the errors from err.response.data
@@ -163,11 +157,11 @@ const BookForm = (props) => {
 
 
                 />
-                {submitErr.map((value, index) => {
+                {/* {submitErr.map((value, index) => {
                     return (
                         <p key={index}>{value}</p>
                     )
-                })}
+                })} */}
                 <TheBlueButton type='submit' value='create' />
 
             </form>

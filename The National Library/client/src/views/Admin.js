@@ -59,11 +59,11 @@ const Admin = ({
     return (
         <div >
             <Navbar
-                data={[...data]}
+                data={data}
                 setData={setData}
             />
             <Router>
-                <Login path='/login'
+                <Login path='login'
                     name={name} password={password}
                     nameChangeHandle={nameChangeHandle}
                     passwordChangeHandle={passwordChangeHandle}
@@ -71,9 +71,9 @@ const Admin = ({
                     passwordErr={passwordErr}
                     submitHandle={logInHandle}
                 />
-                <Logout path='/logout' />
-                <BookForm reserves={reserves} setReserves={setReserves} setData={setData} path='/book/new' header='Add New Book' />
-                <ShowAllOrders reserves={reserves} setReserves={setReserves} path="/reserves" data={data} setData={setData} />
+                <Logout path='logout' />
+                <BookForm reserves={reserves} setReserves={setReserves} data={data} setData={setData} path='/book/new' header='Add New Book' />
+                <ShowAllOrders reserves={reserves} setReserves={setReserves} path="reserves" data={data} setData={setData} />
             </Router>
         </div>
     )

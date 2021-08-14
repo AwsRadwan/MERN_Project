@@ -41,7 +41,7 @@ const Navbar = ({data, setData}) => {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [allData, setAllData] = useState([...data]);
+  const [allData, setAllData] = useState(data);
 
   const handleClickCate = (value) => {
     if(value !== 'All'){

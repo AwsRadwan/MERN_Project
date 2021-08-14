@@ -50,7 +50,7 @@ const ShowAllOrders = ({
     return (
         <div>
             <Navbar 
-                data={[...data]}
+                data={data}
                 setData={setData}
             />
             <div class="row" id="mainCon">

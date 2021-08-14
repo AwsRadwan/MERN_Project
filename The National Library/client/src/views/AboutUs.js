@@ -8,7 +8,7 @@ const AboutUs = ({
     return (
         <>
         <Navbar 
-            data={[...data]}
+            data={data}
             setData={setData}
         />
         <div id="aboutUs">
@@ -18,8 +18,8 @@ const AboutUs = ({
 
 
             This is a multi-disciplinary online library serving the faculty, students, researchers and staff of the university. institutions, individual executives and researchers with certain conditions.
-             The library has a rich and diverse collection of materials.
-              The collection is ideally suited to encourage and support both scholarly pursuits and practical research activities.
+            The library has a rich and diverse collection of materials.
+            The collection is ideally suited to encourage and support both scholarly pursuits and practical research activities.
 </p>
 
             

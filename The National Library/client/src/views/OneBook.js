@@ -26,7 +26,7 @@ const OneBook = ({
     return (
         <div>
             <Navbar 
-                data={[...data]}
+                data={data}
                 setData={setData}
             />
             <ThisBook id={id} />

@@ -6,13 +6,17 @@ import { Router, navigate, Redirect } from "@reach/router"
 import BookForm from './BookForm';
 import Logout from '../components/Logout'
 import Navbar from '../components/Navbar'
+import ReserveOrders from './ReserveOrders'
+import ShowAllOrders from './ShowAllOrders'
 
 
 
 
 const Admin = ({
     data,
-    setData
+    setData,
+    reserves,
+    setReserves
 }) => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
@@ -59,7 +63,7 @@ const Admin = ({
                 setData={setData}
             />
             <Router>
-                <Login path='*/login'
+                <Login path='/login'
                     name={name} password={password}
                     nameChangeHandle={nameChangeHandle}
                     passwordChangeHandle={passwordChangeHandle}
@@ -68,7 +72,8 @@ const Admin = ({
                     submitHandle={logInHandle}
                 />
                 <Logout path='/logout' />
-                <BookForm setData={setData} path='/book/new' header='Add New Book' />
+                <BookForm reserves={reserves} setReserves={setReserves} setData={setData} path='/book/new' header='Add New Book' />
+                <ShowAllOrders reserves={reserves} setReserves={setReserves} path="/reserves" data={data} setData={setData} />
             </Router>
         </div>
     )

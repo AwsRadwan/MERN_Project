@@ -1,10 +1,16 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 
-const AboutUs = () => {
+const AboutUs = ({
+    data,
+    setData
+}) => {
     return (
         <>
-        <Navbar />
+        <Navbar 
+            data={[...data]}
+            setData={setData}
+        />
         <div id="aboutUs">
             <h1>The National Library</h1>
             <p>

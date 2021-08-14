@@ -18,10 +18,6 @@ const ReserveSchema = new mongoose.Schema({
         validate: [validator.isEmail, 'invalid email !!']
     },
     address: String,
-    amount: {
-        type: Number,
-        default: 1
-    },
     book: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "book.model"

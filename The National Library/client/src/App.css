@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
 .App {
   text-align: center;
-  background-image:url('./img/AlfonsMorales.jpg');
+  /* background-image:url('./img/AlfonsMorales.jpg'); */
 }
 
 .App-logo {

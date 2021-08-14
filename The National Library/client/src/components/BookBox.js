@@ -46,10 +46,10 @@ const BookBox = ({book}) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="primary">
+                    <Button onClick={e => navigate('/reserve/'+book._id)} size="small" color="primary">
                     Reserve
                     </Button>
-                    <Button size="small" color="primary" onClick={e => navigate('/book/'+book.title)} >
+                    <Button size="small" color="primary" onClick={e => navigate('/book/'+book._id)} >
                     Learn More
                     </Button>
                 </CardActions>

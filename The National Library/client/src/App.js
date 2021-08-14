@@ -21,29 +21,29 @@ function App() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(
-      () => {
-          axios.get("http://localhost:8000/api/books")
-          .then(res => {
-              setAllBooks(res.data.Books);
-              setLoaded(true);
-          })
-      }, []
+    () => {
+      axios.get("http://localhost:8000/api/books")
+        .then(res => {
+          setAllBooks(res.data.Books);
+          setLoaded(true);
+        })
+    }, []
   );
 
   return (
     <div className="App">
       {
         loaded ?
-        <Router>
-          <Admin data={allBooks} setData={setAllBooks} path="/admin/login" />
-          <Main data={allBooks} setData={setAllBooks}  path="/"/>
-          <OneBook data={allBooks} setData={setAllBooks} path="book/:id" />
-          <AboutUs data={allBooks} setData={setAllBooks} path="/aboutus" />
-        </Router>
-      :
-      <Spinner animation="border" role="status" variant="success">
-          <span className="visually-hidden">Loading...</span>
-      </Spinner>
+          <Router>
+            <Admin data={allBooks} setData={setAllBooks} path="/admin/*" />
+            <Main data={allBooks} setData={setAllBooks} path="/" />
+            <OneBook data={allBooks} setData={setAllBooks} path="book/:id" />
+            <AboutUs data={allBooks} setData={setAllBooks} path="/aboutus" />
+          </Router>
+          :
+          <Spinner animation="border" role="status" variant="success">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
       }
     </div>
   );

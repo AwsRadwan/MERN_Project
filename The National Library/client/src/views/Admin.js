@@ -54,12 +54,12 @@ const Admin = ({
 
     return (
         <div >
-            <Navbar 
+            <Navbar
                 data={[...data]}
                 setData={setData}
             />
             <Router>
-                <Login path='*/login'
+                <Login path='login'
                     name={name} password={password}
                     nameChangeHandle={nameChangeHandle}
                     passwordChangeHandle={passwordChangeHandle}
@@ -67,7 +67,7 @@ const Admin = ({
                     passwordErr={passwordErr}
                     submitHandle={logInHandle}
                 />
-                <Logout path='/logout' />
+                <Logout path='logout' />
                 <BookForm setData={setData} path='/book/new' header='Add New Book' />
             </Router>
         </div>

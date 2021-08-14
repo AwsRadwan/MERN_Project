@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import '../css/About.css'
 
 const AboutUs = ({
     data,
@@ -7,6 +8,7 @@ const AboutUs = ({
 }) => {
     return (
         <>
+        <div id ="all">
         <Navbar 
             data={data}
             setData={setData}
@@ -39,6 +41,7 @@ const AboutUs = ({
 بالقرب من مدرسة الشهيد محمد عودة أبو ظاهر
             </p>
 
+        </div>
         </div>
         </>
     )

@@ -81,9 +81,23 @@
   border-radius: 20px;
   margin: auto;
 }
+#tEsTtHiS {
+  /* background-color: aquamarine; */
+  /* max-height: 300px; */
+  /* padding: 50px; */
+}
+#XZXZ {
+  /* max-height: 500px; */
+}
+.product-layout {
+  /* max-height: 500px; */
+}
+.product-thumb {
+  /* min-height: 700px; */
+}
 
 #listAll {
-  width: 90%;
+  /* width: 90%; */
 }
 #mainCon {
   padding: 0%;
@@ -108,6 +122,20 @@ footer {
   border-top-right-radius: 180px;
   width: 95%;
   margin: auto;
+  margin-top: 30px;
+}
+#FormRO{
+  width: 30%;
+  background-color: rgba(255,228,196);
+  padding: 24px;
+  margin:70px auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+
+
 }
 
 #NavBaR {
@@ -119,4 +147,65 @@ footer {
 
 #BokBox {
   background-color: rgba(255,228,196,0.8);
+}
+
+#bookForm{
+  width: 100%;
+  /* padding: 24px; */
+  /* margin: auto; */
+}
+#formCr{
+  background-color: rgba(255,228,196,0.8);
+  width: 30%;
+  padding: 24px; 
+
+}
+
+.allReservess {
+  background-color: rgba(255,228,196,0.9);
+  max-width: 500px;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 40px;
+  border: 3px solid black;
+}
+.ImGiMg {
+  height: auto;
+}
+.AwsAss {
+  color: black;
+  font-weight: 500;
+  font-size: large;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+}
+.TiTlEsTyle {
+  color: black;
+  text-decoration: underline;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+}
+#PaGeW {
+  min-height: 700px;
+}
+.BiGiMgE {
+  /* width: 50%; */
+}
+.comment-text {
+  font-size: large;
+  
+}
+.PpPp {
+  /* color: aquamarine; */
+}
+#TiMeStYl {
+  color: brown;
+  font-size: medium;
+}
+#HooolComment {
+  background-color: rgba(255,228,196,0.9);
+  border-radius: 50px;
+}
+#HoolDesc {
+  background-color: rgba(255,228,196,0.9);
 }

@@ -18,7 +18,7 @@ import Cookies from 'js-cookie';
 const useStyles = makeStyles({
   root: {
     maxWidth: 330,
-    maxHeight: 330,
+    height: 'fitContent',
     marginBottom: 20,
   },
 });
@@ -31,23 +31,24 @@ const BookBox = ({
     
     const classes = useStyles();
     return (
-        <div class="product-layout product-grid col-lg-3 col-md-4 col-sm-6 col-xs-12 cols">
+        <div id="XZXZ" class="product-layout product-grid col-lg-3 col-md-4 col-sm-6 col-xs-12 cols">
             <div class="product-thumb">
                 <Card className={classes.root} id="BokBox">
                 <CardActionArea onClick={e => navigate('/book/'+book._id)} >
                     <CardMedia
+                    className="ImGiMg"
                     component="img"
                     alt="Contemplative Reptile"
-                    height="160"
+                    height="200"
                     image={book.imges}
                     title={book.title}
                     />
                     <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {book.title}
+                    <Typography className="BoldText" gutterBottom variant="h5" component="h2">
+                        <span className="TiTlEsTyle">{book.title}</span>
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        <CreateIcon /> The Author: {book.author} / <CategoryIcon /> {book.category}
+                    <Typography className="BoldText" variant="body2" color="textSecondary" component="p">
+                        <CreateIcon /><span className="AwsAss"> The Author: {book.author} </span> <br /> / <br /> <CategoryIcon /><span className="AwsAss"> {book.category} </span>
                     </Typography>
                     </CardContent>
                 </CardActionArea>

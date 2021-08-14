@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 752,
         },
         demo: {
-        backgroundColor: theme.palette.background.paper,
+        // backgroundColor: theme.palette.background.paper,
         },
     }));
 
@@ -32,6 +32,7 @@ const ShowAllOrders = ({
 }) => {
 
     const classes = useStyles();
+    // const [rBooks, setRBooks] = useState(data)
 
     const hideDiv = (ida) => {
 		var closedDiv  = document.getElementById(ida);
@@ -48,19 +49,16 @@ const ShowAllOrders = ({
     }
 
     return (
-        <div>
-            <Navbar 
-                data={data}
-                setData={setData}
-            />
+        <div id="PaGeW">
             <div class="row" id="mainCon">
                 <div class="col-lg-10 col-sm-9 col-md-9 col-xs-12 catebox" id="listAll">
                     <div class="row">
                         {
                             reserves ?
                             reserves.map((reserve, index) => {
+                                let xzx = data.find(ww => ww._id === reserve.book)
                                     return (
-                                        <div className={classes.demo}>
+                                        <div className="allReservess">
                                             <List dense={false}>
 
                                                 <ListItem>
@@ -102,14 +100,15 @@ const ShowAllOrders = ({
                                                 {
                                                     reserve.book &&
                                                     <ListItemText
-                                                        primary={data.filter(ww => ww._id === reserve.book)[0].name}
+                                                        primary={xzx && xzx.name}
                                                     />
                                                 }
                                                 </ListItem>
 
-                                                <Button id={"closableDiv"+index} onClick={() => hideDiv("closableDiv"+index)} variant="outlined" color="primary">
+                                                <Button id={"closableDiv"+reserve._id} onClick={() => hideDiv("closableDiv"+reserve._id)} variant="outlined" color="primary">
                                                 Accept
                                                 </Button>
+                                                
                                                 <Button onClick={() => deleteReserve(reserve._id)} variant="outlined" color="secondary">
                                                 Decline
                                                 </Button>
@@ -124,7 +123,6 @@ const ShowAllOrders = ({
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     )
 }

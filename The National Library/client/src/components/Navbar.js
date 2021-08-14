@@ -53,8 +53,7 @@ const Navbar = ({data, setData}) => {
         console.log("22222");
     }
     setAnchorEl(null);
-    console.log(data);
-    console.log(allData);
+    navigate('/');
     // navigate('/');
     }
 
@@ -66,7 +65,7 @@ const Navbar = ({data, setData}) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  console.log(Cookies.get('userInfo') === undefined)
+  // console.log(Cookies.get('userInfo') === undefined)
 
   return (
     <div className={classes.root}>
@@ -105,10 +104,24 @@ const Navbar = ({data, setData}) => {
             })
           }
           </Menu>
-          <AccountCircleOutlinedIcon />
+
+          {Cookies.get('userInfo') !== undefined && 
+          
+          <Typography variant="h5" className={classes.title}>
+          <Button color="inherit" onClick={() => navigate('/admin/book/new')}>Add New Book </Button>
+          </Typography>
+          }
+
+          {Cookies.get('userInfo') !== undefined && 
+          
+          <Typography variant="h5" className={classes.title}>
+          <Button color="inherit" onClick={() => navigate('/admin/reserves')}>All Reserves</Button>
+          </Typography>
+          }
+          
           {Cookies.get('userInfo') !== undefined ?
-            <Button color="inherit" onClick={() => navigate('/admin/logout ')}>Logout</Button> :
-            <Button variant="h6" color="inherit" onClick={() => navigate('/admin/login')}>Login as Admin</Button>
+          <><AccountCircleOutlinedIcon /><Button color="inherit" onClick={() => navigate('/admin/logout ')}>Logout</Button></> :
+          <><AccountCircleOutlinedIcon /><Button variant="h6" color="inherit" onClick={() => navigate('/admin/login')}>Login as Admin</Button></>
           }
         </Toolbar>
       </AppBar>

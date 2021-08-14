@@ -82,7 +82,6 @@ const Main = ({
                 data={data}
                 setData={setData}
             />
-            <Footer />
         </div>
     )
 }

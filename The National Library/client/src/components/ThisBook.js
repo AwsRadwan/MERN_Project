@@ -121,7 +121,7 @@ const ThisBook = ({id}) => {
             <div class="container">
                 <div class="blog-post post-details mb--50">
                     <div class="blog-image">
-                        <img src={book.imges} alt={book.title} />
+                        <img className="BiGiMgE" src={book.imges} alt={book.title} />
                     </div>
                     <div class="blog-content mt--30">
                         <header>
@@ -140,8 +140,8 @@ const ThisBook = ({id}) => {
                                 </span>
                             </div>
                         </header>
-                        <article>
-                            <blockquote>
+                        <article >
+                            <blockquote id="HoolDesc">
                             <h3>Book Descroption</h3>
                                 <p>{book.desc}</p>
                             </blockquote>
@@ -154,15 +154,15 @@ const ThisBook = ({id}) => {
                         bookComments ? bookComments.map(
                             (comment, i) => {
                                 return(
-                                    <div class="single-comment">
+                                    <div class="single-comment" id="HooolComment">
                                         <div class="comment-avatar">
                                             {/* <img src="image/icon/author-logo.png" alt="" /> */}
-                                            <PersonOutlineIcon />
+                                            <PersonOutlineIcon fontSize="large" />
                                         </div>
                                         <div class="comment-text">
-                                            <h5 class="author"> <a href="#"> {comment.name} </a></h5>
-                                            <span class="time">{dateFormat(comment.date, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</span>
-                                            <p>{comment.body}</p>
+                                            <h2> {comment.name}</h2><br />
+                                            <span class="time" id="TiMeStYl">{dateFormat(comment.date, "dddd, mmmm dS, yyyy, h:MM:ss TT")}</span>
+                                            <p className="PpPp">{comment.body}</p>
                                         </div>
                                     </div>
                                 )

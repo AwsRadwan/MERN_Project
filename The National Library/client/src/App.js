@@ -15,6 +15,7 @@ import OneBook from './views/OneBook';
 import AboutUs from './views/AboutUs';
 import Spinner from 'react-bootstrap/Spinner'
 import ReserveOrders from './views/ReserveOrders';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -28,11 +29,8 @@ function App() {
       () => {
           axios.get("http://localhost:8000/api/reserves")
           .then(res => {
-              setAllReserves(res.data.Books);
+              setAllReserves(res.data.Reserves);
               setLoadedR(true);
-          })
-          .catch(err => {
-              console.log(err);
           })
       }, []
   );
@@ -56,13 +54,14 @@ function App() {
           <Main data={allBooks} setData={setAllBooks}  path="/"/>
           <OneBook data={allBooks} setData={setAllBooks} path="/book/:id" />
           <AboutUs data={allBooks} setData={setAllBooks} path="/aboutus" />
-          <ReserveOrders path="/reserve/:id" />
+          <ReserveOrders reserves={allReserves} setReserves={setAllReserves} path="/reserve/:id" />
         </Router>
       :
       <Spinner animation="border" role="status" variant="success">
           <span className="visually-hidden">Loading...</span>
       </Spinner>
       }
+      <Footer/>
     </div>
   );
 }

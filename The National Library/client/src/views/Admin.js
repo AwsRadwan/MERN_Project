@@ -49,8 +49,8 @@ const Admin = ({
                 setNameErr('')
                 Cookies.set('userInfo', res.data.user._id)
                 navigate('/')
-            }).catch(err => err.response.data.includes('Bad') && setNameErr('Name or Password is incorrect'))
-
+            }).catch(err => console.log(err))
+            
     }
     Cookies.get('userInfo')
 
@@ -72,7 +72,7 @@ const Admin = ({
                     submitHandle={logInHandle}
                 />
                 <Logout path='logout' />
-                <BookForm reserves={reserves} setReserves={setReserves} data={data} setData={setData} path='/book/new' header='Add New Book' />
+                <BookForm reserves={reserves} setReserves={setReserves} data={data} setData={setData} path='book/new' header='Add New Book' />
                 <ShowAllOrders reserves={reserves} setReserves={setReserves} path="reserves" data={data} setData={setData} />
             </Router>
         </div>

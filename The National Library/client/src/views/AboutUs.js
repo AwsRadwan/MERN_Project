@@ -1,10 +1,19 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import '../css/About.css'
 
-const AboutUs = () => {
+const AboutUs = ({
+    data,
+    setData
+}) => {
     return (
         <>
-        <Navbar />
+        <div id ="all">
+        <Navbar 
+        data={[...data]}
+        setData = {setData}
+
+        />
         <div id="aboutUs">
             <h1>The National Library</h1>
             <p>
@@ -33,6 +42,7 @@ const AboutUs = () => {
 بالقرب من مدرسة الشهيد محمد عودة أبو ظاهر
             </p>
 
+        </div>
         </div>
         </>
     )

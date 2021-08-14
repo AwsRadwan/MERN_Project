@@ -1,0 +1,51 @@
+
+
+#aboutUs h1 {
+   color: red;
+    font-family: cursive;
+    font-weight: 200;
+    color: inherit;
+    background-color: rgba(255,228,196,0.8);
+    
+}
+#aboutUs p {
+    color: red;
+    font-family: cursive;
+    font-weight: 200;
+    color: inherit;
+    background-color: rgba(255,228,196,0.8);
+    font-size: larger;
+}
+#mission h2 {
+    color: red;
+    font-family: cursive;
+    font-weight: 200;
+    color: inherit;
+    background-color: rgba(255,228,196,0.8);
+
+}
+#mission p {
+    font-family: cursive;
+    font-weight: 200;
+    color: inherit;
+    background-color: rgba(255,228,196,0.8);
+    font-size: larger;
+}
+#address h2  {
+    font-family: cursive;
+    font-weight: 200;
+    color: inherit;
+    background-color: rgba(255,228,196,0.8);
+    font-size: x-large;
+}
+#address p {
+    font-family: cursive;
+    font-weight: 400;
+    color: inherit;
+    background-color: rgba(255,228,196,0.8);
+
+    font-size: x-large;
+}
+#all {
+    height: 700px;
+  }

@@ -12,6 +12,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CreateIcon from '@material-ui/icons/Create';
 import CategoryIcon from '@material-ui/icons/Category';
+import DeleteBookButton from './DeleteBookButton';
+import Cookies from 'js-cookie';
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +23,11 @@ const useStyles = makeStyles({
   },
 });
 
-const BookBox = ({book}) => {
+const BookBox = ({
+    book,
+    data,
+    setData
+}) => {
     
     const classes = useStyles();
     return (
@@ -52,6 +58,10 @@ const BookBox = ({book}) => {
                     <Button size="small" color="primary" onClick={e => navigate('/book/'+book._id)} >
                     Learn More
                     </Button>
+                    {
+                        Cookies.get('userInfo') !== undefined &&
+                        <DeleteBookButton data={data} setData={setData} bookId={book._id} />
+                    }
                 </CardActions>
                 </Card>
             </div>

@@ -3,7 +3,8 @@ import BookBox from './BookBox';
 
 
 const BooksList = ({
-    data
+    data,
+    setData
 }) => {
 
     const handleChange = (value) => {
@@ -17,7 +18,7 @@ const BooksList = ({
                     data ?
                         data.map((book, index) => {
                             return (
-                                <BookBox key={index} book={book} />
+                                <BookBox key={index} book={book} data={data} setData={setData} />
                             )
                         })
                         :

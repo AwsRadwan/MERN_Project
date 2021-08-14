@@ -12,6 +12,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import HomeIcon from '@material-ui/icons/Home';
 import MenuBookOutlinedIcon from '@material-ui/icons/MenuBookOutlined';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
         root: {
@@ -31,6 +32,20 @@ const ShowAllOrders = ({
 }) => {
 
     const classes = useStyles();
+
+    const hideDiv = (ida) => {
+		var closedDiv  = document.getElementById(ida);
+		closedDiv.style.display = "none";
+	}
+
+    const deleteReserve = (idd) => {
+        axios.delete("http://localhost:8000/api/reserves/delete/" + idd)
+        .then(res => {
+            console.log("-I- " + res)
+            setReserves(reserves.filter(ee => ee._id !== idd));
+        })
+        .catch(err => console.log("-E- " + err))
+    }
 
     return (
         <div>
@@ -55,12 +70,6 @@ const ShowAllOrders = ({
                                                 <ListItemText
                                                     primary={reserve.name}
                                                 />
-                                                <Button variant="outlined" color="primary">
-                                                Accept
-                                                </Button>
-                                                <Button variant="outlined" color="secondary">
-                                                Decline
-                                                </Button>
                                                 </ListItem>
                                                 <ListItem>
                                                 <ListItemIcon>
@@ -69,12 +78,6 @@ const ShowAllOrders = ({
                                                 <ListItemText
                                                     primary={reserve.phone}
                                                 />
-                                                <Button variant="outlined" color="primary">
-                                                Accept
-                                                </Button>
-                                                <Button variant="outlined" color="secondary">
-                                                Decline
-                                                </Button>
                                                 </ListItem>
                                                 <ListItem>
                                                 <ListItemIcon>
@@ -83,12 +86,6 @@ const ShowAllOrders = ({
                                                 <ListItemText
                                                     primary={reserve.email}
                                                 />
-                                                <Button variant="outlined" color="primary">
-                                                Accept
-                                                </Button>
-                                                <Button variant="outlined" color="secondary">
-                                                Decline
-                                                </Button>
                                                 </ListItem>
                                                 <ListItem>
                                                 <ListItemIcon>
@@ -97,12 +94,6 @@ const ShowAllOrders = ({
                                                 <ListItemText
                                                     primary={reserve.address}
                                                 />
-                                                <Button variant="outlined" color="primary">
-                                                Accept
-                                                </Button>
-                                                <Button variant="outlined" color="secondary">
-                                                Decline
-                                                </Button>
                                                 </ListItem>
                                                 <ListItem>
                                                 <ListItemIcon>
@@ -114,13 +105,14 @@ const ShowAllOrders = ({
                                                         primary={data.filter(ww => ww._id === reserve.book)[0].name}
                                                     />
                                                 }
-                                                <Button variant="outlined" color="primary">
+                                                </ListItem>
+
+                                                <Button id={"closableDiv"+index} onClick={() => hideDiv("closableDiv"+index)} variant="outlined" color="primary">
                                                 Accept
                                                 </Button>
-                                                <Button variant="outlined" color="secondary">
+                                                <Button onClick={() => deleteReserve(reserve._id)} variant="outlined" color="secondary">
                                                 Decline
                                                 </Button>
-                                                </ListItem>
 
                                             </List>
                                         </div>

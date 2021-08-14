@@ -15,6 +15,7 @@ const MainContainer = ({
             </div>
             <BooksList
                 data={data}
+                setData={setData}
             />
         </div>
     )

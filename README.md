@@ -40,7 +40,7 @@
     <br />
     <img src="images/homePage.png" alt="Home Page">
   </p>
-  <img src="images/homePage.png" alt="Home Page">
+<!--   <img src="images/homePage.png" alt="Home Page"> -->
 </p>
 
 

@@ -15,12 +15,12 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
+<!-- [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 
 
@@ -37,15 +37,16 @@
     In this website we display all the books in the national library, 
     with ability to post a comments, send a feedback, reserve some books and navigate all books with filter by category.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <!-- <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a> -->
   </p>
+  <img src="images/homePage.png" alt="Home Page">
 </p>
 
 
@@ -93,13 +94,13 @@ The main features is:
 ### Built With
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [React] (https://reactjs.org)
-* [Express] (https://expressjs.com)
-* [MongoDB] (https://www.mongodb.com)
-* [Mongoose] (https://mongoosejs.com)
-* [M]aterial-UI] (https://material-ui.com)
+* [React](https://reactjs.org)
+* [Express](https://expressjs.com)
+* [MongoDB](https://www.mongodb.com)
+* [Mongoose](https://mongoosejs.com)
+* [Material_UI](https://material-ui.com)
 * [Bootstrap](https://getbootstrap.com)
-* [Socket.io] (https://socket.io)
+* [Socket.io](https://socket.io)
 
 
 

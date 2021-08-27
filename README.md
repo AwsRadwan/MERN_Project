@@ -37,14 +37,8 @@
     In this website we display all the books in the national library, 
     with ability to post a comments, send a feedback, reserve some books and navigate all books with filter by category.
     <br />
-    <!-- <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a> -->
+    <img src="images/homePage.png" alt="Home Page">
   </p>
   <img src="images/homePage.png" alt="Home Page">
 </p>
